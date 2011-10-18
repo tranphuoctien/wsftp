@@ -38,6 +38,7 @@ public class BasicServer implements WebSocketHandler {
 
     @Override
     public void onClose(WebSocketConnection connection) {
+        System.out.println("Dude disconnected.. :(");
         connectionCount--;
     }
 
