@@ -1,6 +1,6 @@
 {
-  "name": "Bilkenbt Transfer",
-  "description": "Transfer files among Bilkent Members!",
+  "name": "WsFTP",
+  "description": "Demonstrating the capabilities of WebSockets!",
   "version": "1",
   "app": {
     "launch": {
