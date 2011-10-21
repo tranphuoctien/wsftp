@@ -47,11 +47,18 @@ public class BasicServer implements WebSocketHandler {
                 UserCreditentials uc = msgParser.convert(message);
                 switch (connMgr.authenticate(uc)) {
                     case LOGIN_OK:
-                        msg = msgParser.sendMessage(MessageParser.MsgType.SERVER_ALLOW_USER_ENTER);                        
+                        msg = msgParser.createMessage(MessageParser.MsgType.SERVER_ALLOW_USER_ENTER, null);
                         break;
+                    case LOGIN_INCORRECT:
+                        msg = msgParser.createMessage(MessageParser.MsgType.SERVER_LOGIN_INCORRECT, null);
+                    case LOGIN_BLOCKED:
+                        msg = msgParser.createMessage(MessageParser.MsgType.SERVER_BLOCKED_USER, null);
                 }
                 break;
-
+            case CLIENT_WANT_FILE_DETAILS:
+                break;
+            case CLIENT_WANT_PIECE:
+                break;
         }
         this.sendMessage(connection, msg);
     }
@@ -74,11 +81,5 @@ public class BasicServer implements WebSocketHandler {
     public static void main(String[] args) throws Exception {
         WebServer webServer = WebServers.createWebServer(8080).add("/wsftp", new BasicServer()).start();
         System.out.println("Server running at " + webServer.getUri());
-        ObjectMapper om = new ObjectMapper();
-        String message = "{\"type\": \"auth\", \"content\":5}";
-        System.out.println(message);
-        Map p;
-        System.out.println(p = om.readValue(message, Map.class));
-       
     }
 }

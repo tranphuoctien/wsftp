@@ -37,7 +37,7 @@ public class ConnectionManager {
     public Authentication authenticate(UserCreditentials uc) {
         String user = uc.user;
         String password = uc.pass;
-        if (user.equals("mustafa") && password.equals("buket")) {
+        if (user.equals("musti") && password.equals("buket")) {
             return Authentication.LOGIN_OK;
         } else {
             return Authentication.LOGIN_INCORRECT;
