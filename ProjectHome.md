@@ -1,0 +1,1 @@
+With WsFTP, users will be able to directly transfer files at their browsers from specific web servers that supports WsFTP.
